@@ -1,0 +1,140 @@
+# ===============================
+# F7.AKE SUPER AI CORE
+# Ultimate Artificial Intelligence
+# ===============================
+
+import sympy
+import random
+import datetime
+import hashlib
+
+
+class F7AKE:
+
+    def __init__(self):
+
+        self.name = "F7.AKE"
+        self.version = "2.0"
+        self.languages = ["uz", "ru", "en"]
+        self.start_time = datetime.datetime.now()
+
+    # ===============================
+    # CHAT AI
+    # ===============================
+
+    def chat(self, text):
+
+        answers = [
+            "Bu juda yaxshi savol.",
+            "Keling birga o‘ylab ko‘ramiz.",
+            "Bu mavzu juda qiziq.",
+            "Men sizga yordam berishga tayyorman."
+        ]
+
+        return f"{self.name}: {random.choice(answers)}"
+
+    # ===============================
+    # MATH SOLVER
+    # ===============================
+
+    def solve_math(self, exp):
+
+        try:
+            result = sympy.sympify(exp)
+            return result
+        except:
+            return "Matematik ifoda xato."
+
+    # ===============================
+    # LANGUAGE TEACHER
+    # ===============================
+
+    def learn_language(self):
+
+        lesson = {
+            "Hello": "Salom",
+            "Thank you": "Rahmat",
+            "How are you": "Qalaysiz",
+            "Good morning": "Xayrli tong"
+        }
+
+        return lesson
+
+    # ===============================
+    # DAILY STUDY PLAN
+    # ===============================
+
+    def daily_plan(self):
+
+        plan = [
+
+            "07:00 - Uyg‘onish",
+            "08:00 - Ingliz tili",
+            "10:00 - Matematik mashq",
+            "13:00 - Tushlik",
+            "15:00 - Dasturlash",
+            "18:00 - Sport",
+            "20:00 - Takrorlash"
+        ]
+
+        return plan
+
+    # ===============================
+    # IMAGE IDEA GENERATOR
+    # ===============================
+
+    def image_idea(self, prompt):
+
+        return f"{prompt} uchun kreativ AI rasm g‘oyasi yaratildi."
+
+    # ===============================
+    # SECURITY SYSTEM
+    # ===============================
+
+    def secure(self, text):
+
+        return hashlib.sha256(text.encode()).hexdigest()
+
+    # ===============================
+    # SYSTEM INFO
+    # ===============================
+
+    def system_info(self):
+
+        return {
+            "AI": self.name,
+            "version": self.version,
+            "start_time": self.start_time
+        }
+
+
+# ===============================
+# RUN SYSTEM
+# ===============================
+
+if __name__ == "__main__":
+
+    ai = F7AKE()
+
+    print("F7.AKE ishga tushdi")
+
+    while True:
+
+        user = input("Siz: ")
+
+        if user.startswith("math"):
+            exp = user.replace("math ", "")
+            print(ai.solve_math(exp))
+
+        elif user == "plan":
+            print(ai.daily_plan())
+
+        elif user == "lesson":
+            print(ai.learn_language())
+
+        elif user.startswith("image"):
+            prompt = user.replace("image ", "")
+            print(ai.image_idea(prompt))
+
+        else:
+            print(ai.chat(user))
